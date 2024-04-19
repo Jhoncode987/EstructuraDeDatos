@@ -1,2 +1,3 @@
 ﻿// primer proyecto de consola
-Console.WriteLine("Hola, mundo!");
+Console.WriteLine("estructura de datos");
+Console.WriteLine("2024!");

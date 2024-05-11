@@ -270,20 +270,274 @@
 
 ////Calcula la media de los elementos de una matriz.
 
-int[,] matriz = new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-double media = CalcularMedia(matriz);
-Console.WriteLine("el elemento media de la mtriz es: " + media);
-static double CalcularMedia(int[,] matriz)
+//int[,] matriz = new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+//double media = CalcularMedia(matriz);
+//Console.WriteLine("el elemento media de la mtriz es: " + media);
+//static double CalcularMedia(int[,] matriz)
+//{
+//    int suma = 0;
+//    for (int i = 0; i < matriz.GetLength(0); i++)
+//    {
+//        for (int j = 0; j < matriz.GetLength(1); j++)
+//        {
+//            suma += matriz[i, j];
+//        }
+//    }
+//    double media = (double)suma / (matriz.GetLength(0) * matriz.GetLength(1));
+//    return media;
+//}
+
+
+
+////EJERCICIO MATRICES
+////Ejercicio 1: Crea una matriz de números aleatorios de tamaño 100x100.
+
+//Random rnd = new Random();
+//int[,] matriz = new int[100, 100];
+
+//for (int i = 0; i < 100; i++)
+//{
+//   for (int j = 0; j < 100; j++)
+//   {
+//       matriz[i, j] = rnd.Next(-10, 11);
+//   }
+//}
+
+//for (int i = 0; i < 100; i++)
+//{
+//    for (int j = 0; j < 100; j++)
+//    {
+//        Console.Write(matriz[i, j] + " ");
+//    }
+//    Console.WriteLine();
+//}
+
+
+
+
+////Ejercicio 2:Calcula la media, la mediana y la desviación estándar de los elementos de una matriz.
+
+//using System.Linq;
+//int[,] matriz = new int[,]
+//{
+//   {1, 2, 3},
+//   {4, 5, 6},
+//   {7, 8, 9}
+//};
+//double media = CalcularMediaMatriz(matriz);
+//Console.WriteLine("Media: " + media);
+//double mediana = CalcularMedianaMatriz(matriz);
+//Console.WriteLine("Mediana: " + mediana);
+//double desviacionEstandar = CalcularDesviacionEstandarMatriz(matriz, media);
+//Console.WriteLine("Desviación estándar: " + desviacionEstandar);
+//static double CalcularMediaMatriz(int[,] matriz)
+//{
+//   int suma = 0;
+//   foreach (int elemento in matriz)
+//   {
+//      suma += elemento;
+//   }
+//   double media = (double)suma / (matriz.GetLength(0) * matriz.GetLength(1));
+//   return media;
+//}
+//static double CalcularMedianaMatriz(int[,] matriz)
+//{
+//    int[] elementosOrdenados = matriz.Cast<int>().OrderBy(x => x).ToArray();
+//    int cantidadElementos = elementosOrdenados.Length;
+//    if (cantidadElementos % 2 == 0)
+//    {
+//        int medio1 = elementosOrdenados[cantidadElementos / 2 - 1];
+//        int medio2 = elementosOrdenados[cantidadElementos / 2];
+//        return (double)(medio1 + medio2) / 2;
+//    }
+//    else
+//    {
+//        return elementosOrdenados[cantidadElementos / 2];
+//    }
+//}
+//static double CalcularDesviacionEstandarMatriz(int[,] matriz, double media)
+//{
+//    double sumaCuadradosDiferencias = 0;
+//    foreach (int elemento in matriz)
+//    {
+//       double diferencia = elemento - media;
+//       sumaCuadradosDiferencias += diferencia * diferencia;
+//    }
+//    double varianza = sumaCuadradosDiferencias / (matriz.GetLength(0) * matriz.GetLength(1));
+//    double desviacionEstandar = Math.Sqrt(varianza);
+//    return desviacionEstandar;
+//}
+
+
+
+////Ejercicio 3: Escribe una función que encuentre el elemento máximo de una matriz.
+
+//int[,] matriz = {
+//   {1, 3, 5},
+//   {9, 7, 2},
+//   {4, 6, 8}
+//};
+//int maximo = EncontrarMaximo(matriz);
+//Console.WriteLine("El elemento máximo de la matriz es: " + maximo);
+//static int EncontrarMaximo(int[,] matriz)
+//{
+//    int maximo = matriz[0, 0];
+//    foreach (int elemento in matriz)
+//    {
+//        if (elemento > maximo)
+//        {
+//           maximo = elemento;
+//        }
+//    }
+//    return maximo;
+//}
+
+
+
+////Ejercicio 4: Escribe una función que encuentre la submatriz de mayor suma de una matriz.
+
+
+//int[,] matriz = {
+//   {-1, 2, 3},
+//   {4, -5, 6},
+//   {7, 8, -9}
+//};
+
+//int maximaSuma = 0;
+//int filaInicio = 0;
+//int filaFin = 0;
+//int columnaInicio = 0;
+//int columnaFin = 0;
+//EncontrarSubmatrizMaxima(matriz, out maximaSuma, out filaInicio, out filaFin, out columnaInicio, out columnaFin);
+//Console.WriteLine("La submatriz de mayor suma es:");
+//for (int i = filaInicio; i <= filaFin; i++)
+//{
+//    for (int j = columnaInicio; j <= columnaFin; j++)
+//    {
+//        Console.Write(matriz[i, j] + " ");
+//    }
+//    Console.WriteLine();
+//        }
+//Console.WriteLine("La suma de la submatriz de mayor suma es: " + maximaSuma);
+//static void EncontrarSubmatrizMaxima(int[,] matriz, out int maximaSuma, out int filaInicio, out int filaFin, out int columnaInicio, out int columnaFin)
+//{
+//    int filas = matriz.GetLength(0);
+//    int columnas = matriz.GetLength(1);
+//    maximaSuma = int.MinValue;
+//    filaInicio = 0;
+//    filaFin = 0;
+//    columnaInicio = 0;
+//    columnaFin = 0;
+//    for (int columnaInicioActual = 0; columnaInicioActual < columnas; columnaInicioActual++)
+//    {
+//        int[] sumaTemporal = new int[filas];
+//        for (int columnaFinActual = columnaInicioActual; columnaFinActual < columnas; columnaFinActual++)
+//        {
+//            for (int fila = 0; fila < filas; fila++)
+//            {
+//                sumaTemporal[fila] += matriz[fila, columnaFinActual];
+//            }
+
+//        int maximaSumaTemporal = 0;
+//        int maximaSumaHastaAhora = int.MinValue;
+//        int filaInicioTemporal = 0;
+//        for (int fila = 0; fila < filas; fila++)
+//        {
+//             maximaSumaTemporal += sumaTemporal[fila];
+//             if (maximaSumaTemporal > maximaSumaHastaAhora)
+//             {
+//                 maximaSumaHastaAhora = maximaSumaTemporal;
+//                 filaFin = fila;
+//                 filaInicio = filaInicioTemporal;
+//             }
+//             if (maximaSumaTemporal < 0)
+//             {
+//                 maximaSumaTemporal = 0;
+//                 filaInicioTemporal = fila + 1;
+//             }
+//        }
+//            if (maximaSumaHastaAhora > maximaSuma)
+//            {
+//                maximaSuma = maximaSumaHastaAhora;
+//                columnaInicio = columnaInicioActual;
+//                columnaFin = columnaFinActual;
+//            }
+//        }
+//    }
+//}
+
+
+
+
+
+////Ejercicio 5: Escribe una función que encuentre la matriz de covarianza de dos matrices.
+
+double[,] matriz1 = {
+     {1, 2, 3},
+     {4, 5, 6},
+     {7, 8, 9}
+};
+double[,] matriz2 = {
+     {9, 8, 7},
+     {6, 5, 4},
+     {3, 2, 1}
+};
+double[,] matrizCovarianza = CalcularMatrizCovarianza(matriz1, matriz2);
+Console.WriteLine("Matriz de covarianza:");
+MostrarMatriz(matrizCovarianza);
+static double[,] CalcularMatrizCovarianza(double[,] matriz1, double[,] matriz2)
 {
-    int suma = 0;
-    for (int i = 0; i < matriz.GetLength(0); i++)
+   int filas = matriz1.GetLength(0);
+   int columnas = matriz1.GetLength(1);
+   if (filas != matriz2.GetLength(0) || columnas != matriz2.GetLength(1))
+   {
+      throw new ArgumentException("Las dimensiones de las matrices deben ser iguales para calcular la covarianza.");
+   }
+   double[] mediaMatriz1 = CalcularMediaColumnas(matriz1);
+   double[] mediaMatriz2 = CalcularMediaColumnas(matriz2);
+   double[,] matrizCovarianza = new double[columnas, columnas];
+   for (int i = 0; i < columnas; i++)
+   {
+       for (int j = 0; j < columnas; j++)
+       {
+           double covarianza = 0;
+           for (int k = 0; k < filas; k++)
+           {
+               covarianza += (matriz1[k, i] - mediaMatriz1[i]) * (matriz2[k, j] - mediaMatriz2[j]);
+           }
+           covarianza /= filas - 1; 
+           matrizCovarianza[i, j] = covarianza;
+       }
+   }
+   return matrizCovarianza;
+}
+static double[] CalcularMediaColumnas(double[,] matriz)
+{
+   int filas = matriz.GetLength(0);
+   int columnas = matriz.GetLength(1);
+   double[] medias = new double[columnas];
+   for (int j = 0; j < columnas; j++)
+   {
+       double sumaColumna = 0;
+       for (int i = 0; i < filas; i++)
+       {
+           sumaColumna += matriz[i, j];
+       }
+       medias[j] = sumaColumna / filas;
+   }
+   return medias;
+}
+static void MostrarMatriz(double[,] matriz)
+{
+    int filas = matriz.GetLength(0);
+    int columnas = matriz.GetLength(1);
+    for (int i = 0; i < filas; i++)
     {
-        for (int j = 0; j < matriz.GetLength(1); j++)
+        for (int j = 0; j < columnas; j++)
         {
-            suma += matriz[i, j];
+            Console.Write(matriz[i, j] + "\t");
         }
+        Console.WriteLine();
     }
-    double media = (double)suma / (matriz.GetLength(0) * matriz.GetLength(1));
-    return media;
 }
 

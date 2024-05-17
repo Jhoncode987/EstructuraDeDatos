@@ -232,40 +232,156 @@
 
 
 ////Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que están duplicados.
-using System;
-using System.Collections.Generic;
-using System.Linq;
+//int[] numeros = { 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 8, 9, 9, 10, 11, 1, 12, 13, 14, 14, 15};
+//ISet<int> duplicados = encontrarDuplicados(numeros);
+//Console.WriteLine("Los numeros duplicados son: " + string.Join(", ", duplicados));
+//static ISet<int> encontrarDuplicados(int[] numeros)
+//{
+//    HashSet<int> set = new HashSet<int>();
+//    HashSet<int> duplicados = new HashSet<int>();
+//    foreach (int numero in numeros)
+//    {
+//        if (!set.Add(numero))
+//        {
+//            duplicados.Add(numero);
+//        }
+//    }
+//    return duplicados;
+//}
 
-class Program
+
+
+////Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que no están duplicados.
+//int[] numeros = { 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 8, 9, 9, 10, 11, 1, 12, 13, 14, 14, 15 };
+//ISet<int> noDuplicados = encontrarNoDuplicados(numeros);
+//Console.WriteLine("Los numeros no duplicados son: " + string.Join(", ", noDuplicados));
+//static ISet<int> encontrarNoDuplicados(int[] numeros)
+//{
+//    return numeros.GroupBy(n => n)
+//    .Where(g => g.Count() == 1)
+//    .Select(g => g.Key)
+//    .ToHashSet();
+//}
+
+
+
+////Escriba una función que reciba un conjunto de números y devuelva un conjunto con los números que son primos
+//// y están ordenados de menor a mayor.
+//HashSet<int> numeros = new HashSet<int> { 10, 15, 3, 7, 2, 9, 17, 4, 11, 6, 5, 15, 13, 16, 21, 23, 27, 25, 29};
+//HashSet<int> primosOrdenados = obtenerPrimosOrdenados(numeros);
+//Console.WriteLine("Números primos ordenados de menor a mayor:");
+//foreach (int numero in primosOrdenados)
+//{
+//    Console.WriteLine(numero);
+//}
+//static HashSet<int> obtenerPrimosOrdenados(HashSet<int> numeros)
+//{
+//    return new HashSet<int>(numeros.Where(EsPrimo).OrderBy(n => n));
+//}
+//static bool EsPrimo(int numero)
+//{
+//    if (numero <= 1)
+//    {
+//        return false;
+//    }
+//    for (int i = 2; i <= Math.Sqrt(numero); i++)
+//    {
+//        if (numero % i == 0)
+//        {
+//            return false;
+//        }
+//    }
+//    return true;
+//}
+
+
+
+////Escriba una función que reciba un conjunto de palabras y devuelva un conjunto con las palabras que son
+/// palíndromos y están ordenadas de menor a mayor.
+//HashSet<string> palabras = new HashSet<string> { "ama", "zorro", "reconocer", "radar", "amor", "perro", "madam", "level", "roma" };
+//HashSet<string> palindromosOrdenados = ObtenerPalindromosOrdenados(palabras);
+//Console.WriteLine("Palabras que son palíndromos ordenadas de menor a mayor:");
+//foreach (string palabra in palindromosOrdenados)
+//{
+//    Console.WriteLine(palabra);
+//}
+//static HashSet<string> ObtenerPalindromosOrdenados(HashSet<string> palabras)
+//{
+//    return new HashSet<string>(palabras.Where(EsPalindromo).OrderBy(p => p));
+//}
+//static bool EsPalindromo(string palabra)
+//{
+//    int longitud = palabra.Length;
+//    for (int i = 0; i < longitud / 2; i++)
+//    {
+//        if (palabra[i] != palabra[longitud - i - 1])
+//        {
+//            return false;
+//        }
+//    }
+//    return true;
+//}
+
+
+
+////Escriba una función que reciba un conjunto de palabras y devuelva un conjunto con las palabras que
+//// tienen una longitud determinada y están ordenadas de menor a mayor.
+//HashSet<string> palabras = new HashSet<string> { "casa", "perro", "gato", "coche", "mesa", "silla", "lore", "amigos", "larvas" };
+//int longitudDeseada = 4;
+//HashSet<string> palabrasOrdenadas = longitudYOrdenar(palabras, longitudDeseada);
+//Console.WriteLine($"Palabras de longitud {longitudDeseada} ordenadas de menor a mayor:");
+//foreach (string palabra in palabrasOrdenadas)
+//{
+//    Console.WriteLine(palabra);
+//}
+//static HashSet<string> longitudYOrdenar(HashSet<string> palabras, int longitud)
+//{
+//    return new HashSet<string>(palabras.Where(p => p.Length == longitud).OrderBy(p => p));
+//}
+
+
+
+////Escriba una función que reciba un conjunto de palabras y devuelva un conjunto con las palabras que
+////contienen una letra determinada y están ordenadas de mayor a menor.
+//HashSet<string> palabras = new HashSet<string> { "casa", "perro", "gato", "coche", "mesa", "silla", "mueble", "departamento" };
+//char letraBuscada = 'o';
+//HashSet<string> palabrasOrdenadas = LetraYOrdenar(palabras, letraBuscada);
+//Console.WriteLine($"Palabras que contienen la letra '{letraBuscada}' ordenadas de mayor a menor:");
+//foreach (string palabra in palabrasOrdenadas)
+//{
+//    Console.WriteLine(palabra);
+//}
+//static HashSet<string> LetraYOrdenar(HashSet<string> palabras, char letra)
+//{
+//    return new HashSet<string>(palabras.Where(p => p.Contains(letra)).OrderByDescending(p => p));
+//}
+
+
+
+////Escriba una función que reciba un conjunto de palabras y devuelva un conjunto con las palabras que
+//// son palíndromos, tienen una longitud determinada y están ordenadas de menor a mayor.
+HashSet<string> palabras = new HashSet<string> {"ama", "zorro", "reconocer", "radar", "amor", "perro", "madam", "level", "roma"};
+int longitudDeseada = 3;
+HashSet<string> palindromosOrdenados = obtenerPalindromosOrdenados(palabras, longitudDeseada);
+Console.WriteLine($"Palabras que son palíndromos de longitud {longitudDeseada} ordenadas de menor a mayor:");
+foreach (string palabra in palindromosOrdenados)
 {
-    static void Main()
+    Console.WriteLine(palabra);
+}
+static HashSet<string> obtenerPalindromosOrdenados(HashSet<string> palabras, int longitud)
+{
+    return new HashSet<string>(palabras.Where(p => EsPalindromo(p) && p.Length == longitud).OrderBy(p => p));
+}
+static bool EsPalindromo(string palabra)
+{
+    int longitud = palabra.Length;
+    for (int i = 0; i < longitud / 2; i++)
     {
-        HashSet<int> numeros = new HashSet<int> { 1, 2, 3, 4, 5, 3, 6, 7, 8, 9, 2, 10 };
-        HashSet<int> numerosDuplicados = ObtenerNumerosDuplicados(numeros);
-
-        Console.WriteLine("Números duplicados:");
-        foreach (int numero in numerosDuplicados)
+        if (palabra[i] != palabra[longitud - i - 1])
         {
-            Console.WriteLine(numero);
+            return false;
         }
     }
-
-    static HashSet<int> ObtenerNumerosDuplicados(HashSet<int> numeros)
-    {
-        var conteo = new Dictionary<int, int>();
-        foreach (var numero in numeros)
-        {
-            if (conteo.ContainsKey(numero))
-            {
-                conteo[numero]++;
-            }
-            else
-            {
-                conteo[numero] = 1;
-            }
-        }
-
-        return new HashSet<int>(conteo.Where(kv => kv.Value > 1).Select(kv => kv.Key));
-    }
+    return true;
 }
 
